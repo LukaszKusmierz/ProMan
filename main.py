@@ -48,7 +48,6 @@ def registration():
             return render_template("registration.html", errors='Unknown error, please try later.')
 
 
-
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'GET':
@@ -74,7 +73,6 @@ def login():
             return render_template("login.html", errors=['Password incorrect!'])
 
 
-
 def is_logged():
     return "is_logged" in session and session["is_logged"]
 
@@ -83,8 +81,6 @@ def is_logged():
 def logout():
     session.clear()
     return redirect("/")
-
-
 
 
 @app.route("/")
@@ -104,6 +100,28 @@ def get_boards():
     return boards_handler.get_boards()
 
 
+@app.route("/api/boards/<int:board_id>")
+@json_response
+def get_board(board_id: int):
+    return  boards_handler.get_board(board_id)
+
+
+@app.route("/api/new_board", methods=['POST'])
+@json_response
+def create_new_board():
+    data = request.json
+    boards_handler.add_board(data['title'])
+    return data
+
+
+@app.route("/api/new_card/", methods=['POST'])
+@json_response
+def create_new_card():
+    data = request.json
+    cards_handler.add_card(data['board_id'], data['status_id'], data['title'])
+    return data
+
+
 @app.route("/api/boards/<int:board_id>/cards/")
 @json_response
 def get_cards_for_board(board_id: int):
@@ -112,6 +130,52 @@ def get_cards_for_board(board_id: int):
     :param board_id: id of the parent board
     """
     return cards_handler.get_cards_for_board(board_id)
+
+
+@app.route("/api/boards/statuses/")
+@json_response
+def get_statuses():
+    return status_handler.get_statuses()
+
+
+@app.route("/api/boards/statuses/<int:status_id>")
+@json_response
+def get_status(status_id):
+    return status_handler.get_card_status(status_id)
+
+
+@app.route("/api/card/")
+@json_response
+def get_card():
+    return 'cards_handler.get_card_by_id'
+
+
+@app.route("/api/delete_board/<int:board_id>", methods=['DELETE'])
+@json_response
+def delete_board(board_id):
+    return boards_handler.delete_board_by_id(board_id)
+
+
+@app.route("/api/delete_card/<int:card_id>", methods=['DELETE'])
+@json_response
+def delete_card(card_id):
+    return cards_handler.delete_card_by_id(card_id)
+
+
+@app.route("/api/update_board", methods=['PATCH'])
+@json_response
+def update_board():
+    data = request.json
+    boards_handler.update_board_by_id(data['board_id'], data['title'])
+    return data
+
+
+@app.route("/api/update_card", methods=['PATCH'])
+@json_response
+def update_card_title():
+    data = request.json
+    cards_handler.update_card_title_by_id(data['card_id'], data['title'])
+    return data
 
 
 def main():
