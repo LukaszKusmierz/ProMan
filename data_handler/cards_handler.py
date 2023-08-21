@@ -22,7 +22,7 @@ def get_card_by_id(cursor, card_id):
         """, {"card_id": card_id})
     return cursor.fetchone()
 
-
+#TODO return Id/
 @connection.connection_handler
 def add_card(cursor, board_id, status_id,  title):
     cursor.execute(

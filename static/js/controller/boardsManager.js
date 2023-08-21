@@ -11,7 +11,7 @@ export let boardsManager = {
             const content = boardBuilder(board);
             domManager.addChild("#root", content);
             domManager.addEventListener(
-                `.toggle-board-button[data-board-id="${board.id}"]`,
+                `.accordion-button[data-board-id="${board.id}"]`,
                 "click",
                 showHideButtonHandler
             );
@@ -21,5 +21,7 @@ export let boardsManager = {
 
 function showHideButtonHandler(clickEvent) {
     const boardId = clickEvent.target.dataset.boardId;
+    const boardElement = document.querySelector(`#board${boardId} .accordion-body`);
+    boardElement.innerHTML = "";
     cardsManager.loadCards(boardId);
 }

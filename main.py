@@ -103,23 +103,23 @@ def get_boards():
 @app.route("/api/boards/<int:board_id>")
 @json_response
 def get_board(board_id: int):
-    return  boards_handler.get_board(board_id)
+    return boards_handler.get_board(board_id)
 
-
-@app.route("/api/new_board", methods=['POST'])
+#TODO check the added board and get it's Id
+@app.route("/api/new_board", methods=['PUT'])
 @json_response
 def create_new_board():
     data = request.json
-    boards_handler.add_board(data['title'])
-    return data
+    new_data = boards_handler.add_board(data['title'])
+    return new_data
 
-
+#TODO check the added card and get it's Id
 @app.route("/api/new_card/", methods=['POST'])
 @json_response
 def create_new_card():
     data = request.json
-    cards_handler.add_card(data['board_id'], data['status_id'], data['title'])
-    return data
+    new_data = cards_handler.add_card(data['board_id'], data['status_id'], data['title'])
+    return new_data
 
 
 @app.route("/api/boards/<int:board_id>/cards/")

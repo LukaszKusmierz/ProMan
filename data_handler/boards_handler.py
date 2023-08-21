@@ -19,13 +19,15 @@ def get_board(cursor, board_id):
         """, {"board_id": board_id})
     return cursor.fetchall()
 
-
+#TODO return Id
 @connection.connection_handler
 def add_board(cursor, title):
     cursor.execute("""
     INSERT INTO boards(title)
-    VALUES (%(title)s);
+    VALUES (%(title)s)
+    RETURNING id;
     """, {"title": title})
+    return cursor.fetchone()['id']
 
 
 @connection.connection_handler
