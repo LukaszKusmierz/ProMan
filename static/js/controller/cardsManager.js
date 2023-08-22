@@ -19,4 +19,7 @@ export let cardsManager = {
 };
 
 function deleteButtonHandler(clickEvent) {
+    const cardId = clickEvent.target.dataset.cardId;
+    const cardElement = document.querySelector(`#board${boardId} .accordion-body .card[data-card-id="${cardId}"]`);
+    dataHandler.deleteCard()
 }

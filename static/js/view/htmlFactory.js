@@ -55,26 +55,6 @@ function boardBuilder(board) {
     `;
 }
 
-
-// function boardBuilder(board) {
-//     return `
-//         <div class="accordion-item">
-//             <h2 class="accordion-header" id="heading${board.id}">
-//                 <button class="accordion-button collapsed" data-board-id="${board.id}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${board.id}" aria-expanded="false" aria-controls="collapse${board.id}">
-//                     ${board.title}
-//                 </button>
-//             </h2>
-//             <div id="collapse${board.id}" class="accordion-collapse collapse" aria-labelledby="heading${board.id}" data-bs-parent="#${board.id}">
-//                 <div class="accordion-body">
-//                     <!-- Your board content goes here -->
-//                     Board ID: ${board.id}
-//                 </div>
-//             </div>
-//         </div>
-//     `;
-// }
-
-
 function cardBuilder(card) {
     return `<div class="card" data-card-id="${card.id}">${card.title}</div>`;
 }
