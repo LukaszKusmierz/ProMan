@@ -48,7 +48,23 @@ function boardBuilder(board) {
                     </button>
                 </h2>
                 <div id="board${board.id}" class="accordion-collapse collapse" aria-labelledby="heading${board.id}" data-bs-parent="#boards">
-                    <div class="accordion-body" data-board-id="${board.id}"></div>
+                    <div class="accordion-body" data-board-id="${board.id}">
+                        <button type="button" id="renameBoardButton" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#renameBoardModal"  data-board-id="${board.id}">Rename Board</button>
+                        <button type="button" id="addCardButton" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#addCardModal" data-board-id="${board.id}"> Add Card</button>
+                        <button type="button" id="deleteBoardButton" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#deleteBoardModal" data-board-id="${board.id}">Delete Board</button> 
+                        <button type="button" id="addStatusButton" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#addStatusModal" data-board-id="${board.id}">Add status</button> 
+                          <div class="container text-center" id="containerColumn">
+                            <div class="row align-items-start">        
+                               ${board.statuses.map(status => `
+                              <div class="col draggable-column" id="board-column-title" draggable="true">
+                                <a data-bs-toggle="modal" data-bs-target="#renameStatusModal" data-status="${status.id}" data-board-id="${board.id}" href="#renameStatusModal">
+                                  ${status.title}
+                                </a>
+                                <div class="col-body" id="board-column-title"></div>
+                              </div>`).join("")}
+                            </div>
+                          </div>
+                    </div>
                 </div>
             </div>
         </div>

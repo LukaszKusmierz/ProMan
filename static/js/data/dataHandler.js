@@ -21,7 +21,7 @@ export let dataHandler = {
         // the statuses are retrieved and then the callback function is called with the statuses
     },
 
-    getStatusesFor: async function (boardId) {
+    getStatusesForBoard: async function (boardId) {
         return await apiGet(`/api/boards/${boardId}/statuses`)
     // the statuses are retrieved and then the callback function is called with the statuses
     },
@@ -41,12 +41,14 @@ export let dataHandler = {
     },
 
     createNewBoard: async function (boardTitle) {
-        return await apiPost(`/api/new_board`, boardTitle)
+        return await apiPut(`/api/new_board`, boardTitle)
         // creates new board, saves it and calls the callback function with its data
     },
 
-    createNewCard: async function (boardId, statusId, cardTitle) {
-        return await apiPost(`/api/boards/${boardId}/cards/statuses/${statusId}`, cardTitle)
+    createNewCard: async function (boardId, cardTitle) {
+        console.log("Updating board with ID:", boardId);
+        console.log("New board title:", cardTitle);
+        return await apiPut(`/api/boards/${boardId}/new_card`, cardTitle)
         // creates new card, saves it and calls the callback function with its data
     },
 

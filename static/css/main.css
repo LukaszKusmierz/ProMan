@@ -1,3 +1,8 @@
-#boards {
-    background-color: green;
+.accordion-collapse {
+    background-color: silver;
+}
+
+.btn-primary {
+    background-color: lightslategray;
+    color: black;
 }
