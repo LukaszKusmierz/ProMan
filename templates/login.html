@@ -1,31 +1,31 @@
-{% extends 'layout_table.html' %}
-{% block title %}Login{% endblock %}
-
-{% block header %}
-<h1>Let's play Puzzle</h1>
-{% endblock %}
-
-{% block nav %}
-     <ul><li><a href="/">Main page</a></li></ul>
-{% endblock %}
-
-{% block main %}
-    <h2>Login</h2>
-     <p class="errors">
-     {{ errors }}
-    </p>
-
-    <form action="/login" method="post">
-
-        <label for="user_name_email">Player name or email: </label>
-        <input id="user_name_email" name="user_name_email" type="text" maxlength="50" size="30" required>
-
-        <label for="password"> Password: </label>
-        <input id="password" name="password" type="password" maxlength="20" minlength="3" size="30" required>
-        <br>
-        <button id="login" type="submit" value="Login">Login</button>
-
-    </form>
-    <br><br>
-{% endblock %}
-
+{#{% extends 'layout_table.html' %}#}
+{#{% block title %}Login{% endblock %}#}
+{##}
+{#{% block header %}#}
+{#<h1>Let's play Puzzle</h1>#}
+{#{% endblock %}#}
+{##}
+{#{% block nav %}#}
+{#     <ul><li><a href="/">Main page</a></li></ul>#}
+{#{% endblock %}#}
+{##}
+{#{% block main %}#}
+{#    <h2>Login</h2>#}
+{#     <p class="errors">#}
+{#     {{ errors }}#}
+{#    </p>#}
+{##}
+{#    <form action="/api/users/login" method="post">#}
+{##}
+{#        <label for="user_name_email">Player name or email: </label>#}
+{#        <input id="user_name_email" name="user_name_email" type="text" maxlength="50" size="30" required>#}
+{##}
+{#        <label for="password"> Password: </label>#}
+{#        <input id="password" name="password" type="password" maxlength="20" minlength="3" size="30" required>#}
+{#        <br>#}
+{#        <button id="login" type="submit" value="Login">Login</button>#}
+{##}
+{#    </form>#}
+{#    <br><br>#}
+{#{% endblock %}#}
+{##}
